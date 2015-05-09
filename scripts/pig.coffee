@@ -14,7 +14,6 @@ module.exports = (robot) ->
   robot.respond /pig/i, (msg) ->
     msg.send 'ﾌﾞﾋｯ'
 
-
   robot.respond /tiqav (.*)/i, (msg) ->
     request = require('request')
     request.get "http://api.tiqav.com/search.json?q=#{msg.match[1]}", (error, response, body) ->
@@ -22,3 +21,6 @@ module.exports = (robot) ->
         return msg.send("can't find a picture...XO")
       data = JSON.parse(body)[0]
       msg.send "I got it!!! http://img.tiqav.com/#{data.id}.#{data.ext}"
+
+  robot.hear /war/i, (msg) ->
+    msg.send 'Pig!!!'
